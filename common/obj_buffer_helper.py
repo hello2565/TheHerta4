@@ -515,8 +515,8 @@ class ObjBufferHelper:
             # print("鸣潮专属测试版权重处理：")
             blendweights_dict, blendindices_dict = VertexGroupUtils.get_blendweights_blendindices_v4_fast(mesh=mesh,normalize_weights = normalize_weights,blend_size=blend_size)
 
-        elif GlobalConfig.logic_name == LogicName.SnowBreak:
-            print("尘白禁区权重处理")
+        elif GlobalConfig.logic_name == LogicName.SnowBreak or GlobalConfig.logic_name == LogicName.CAMI:
+            print("尘白禁区/卡拉彼丘权重处理")
             blendweights_dict, blendindices_dict = VertexGroupUtils.get_blendweights_blendindices_v4_fast(mesh=mesh,normalize_weights = normalize_weights,blend_size=blend_size)
         else:
             blendweights_dict, blendindices_dict = VertexGroupUtils.get_blendweights_blendindices_v3(mesh=mesh,normalize_weights = normalize_weights)
