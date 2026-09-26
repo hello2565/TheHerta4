@@ -1328,8 +1328,8 @@ class ObjBufferHelper:
 
         # 设置ib，准备返回
         ib = flattened_ib
-        # YYSLS/SnowBreak 需要在导出时翻转面朝向
-        if GlobalConfig.logic_name == LogicName.YYSLS or GlobalConfig.logic_name == LogicName.SnowBreak:
+        # YYSLS/SnowBreak/CAMI 需要在导出时翻转面朝向（与导入侧 initialize_mesh 的翻转互逆）
+        if GlobalConfig.logic_name == LogicName.YYSLS or GlobalConfig.logic_name == LogicName.SnowBreak or GlobalConfig.logic_name == LogicName.CAMI:
             flipped_indices = []
             # print(flattened_ib[0],flattened_ib[1],flattened_ib[2])
             for i in range(0, len(flattened_ib), 3):

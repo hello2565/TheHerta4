@@ -11,9 +11,13 @@ class ExportCAMI:
     """卡拉彼丘 (Calabiyau / Strinova) 的 Mod 生成。
 
     与 SnowBreak 同族：unreal_vs 风格的 IB hash + match_first_index
-    TextureOverride，GPU 蒙皮布局（vb4 = BI4+BW4）。区别在于游戏引擎
-    侧导入/导出均不做坐标变换（见 submesh_model 的 identity 分支），
-    且 SSMT4 侧的 GameType 为 CAMI 目录下的 CPU_ATTRIBUTE-*/GPU_P12_* 布局。
+    TextureOverride，GPU 蒙皮布局（vb4 = BI4+BW4）。坐标变换：游戏数据为
+    头朝 +Z 的立姿、仅朝向相差 180°，导入/导出均为 Rz(180)（自逆旋转，
+    往返精确还原），尺寸按 SnowBreak 惯例导入 0.01、导出 ×100
+    （mesh_create_helper / submesh_model）；三角形绕序与 SnowBreak 相反于
+    Blender，导入/导出两侧均做翻转（initialize_mesh /
+    obj_buffer_helper.unified）。
+    SSMT4 侧的 GameType 为 CAMI 目录下的 CPU_ATTRIBUTE-*/GPU_P12_* 布局。
     """
 
     def __init__(self, blueprint_model):
